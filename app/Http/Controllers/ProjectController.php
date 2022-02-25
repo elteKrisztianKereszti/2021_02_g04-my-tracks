@@ -56,6 +56,17 @@ class ProjectController extends Controller
         ]);
     }
 
+
+    public function update(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+            'image_url' => 'nullable|url',
+        ]);
+
+        dd($request);
+    }
+
     public function detail($id, Request $request)
     {
         //dd($request);

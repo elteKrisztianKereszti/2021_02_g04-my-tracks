@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>Edit project</h2>
-<form method="post">
+<form action="/projects/{{ $project['id'] }}" method="post">
 
 @method('put')
 @csrf
@@ -44,7 +44,7 @@
 </div>
 
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">Add new project</button>
+    <button type="submit" class="btn btn-primary">Update project</button>
 </div>
 
 </form>
