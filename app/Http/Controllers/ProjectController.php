@@ -33,6 +33,12 @@ class ProjectController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+            'image_url' => 'nullable|url',
+        ]);
+
         dd($request);
     }
 
