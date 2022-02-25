@@ -42,6 +42,20 @@ class ProjectController extends Controller
         dd($request);
     }
 
+    public function edit($id)
+    {
+        $project = [
+            'id'          => $id,
+            'name'        => 'Project' . $id,
+            'description' => 'Description' . $id,
+            'image_url'   => 'https://img.jofogas.hu/hdimages/Neca___Jim_Raynor_556392083396273.jpg',
+        ];
+
+        return view('projects/edit', [
+            'project' => $project
+        ]);
+    }
+
     public function detail($id, Request $request)
     {
         //dd($request);

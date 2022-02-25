@@ -27,5 +27,6 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('foo');
 Route::get('/projects/create', [ProjectController::class, 'create']);
 Route::post('/projects/create', [ProjectController::class, 'store']);
 Route::get('/projects/{id}', [ProjectController::class, 'detail']);
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit']);
 Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_task']);
 Route::get('/transposer', [TransposerController::class, 'index']);
