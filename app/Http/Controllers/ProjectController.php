@@ -32,9 +32,13 @@ class ProjectController extends Controller
         return view('projects/create');
     }
 
-    public function detail()
+    public function detail($id, Request $request)
     {
-        return view('projects/detail');
+        //dd($request);
+
+        return view('projects/detail', [
+            'id' => $id
+        ]);
     }
 
     public function create_task()

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-      <h2>Project1</h2>
+      <h2>Project{{ $id }}</h2>
       <a href="new-track.html" class="btn btn-primary">Add new track</a>
       <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #bbb7b4">
