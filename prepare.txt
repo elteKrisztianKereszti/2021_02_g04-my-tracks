@@ -1,0 +1,18 @@
+1) install composer
+2) install manuall, and create a laravel app with php comoser.phar command:
+php composer.phar create-project --prefer-dist laravel/laravel your-project
+
+After that, project must be prepared. If any issue detected, follow these steps:
+Execute:
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+Execute:
+php composer.phar install
+
+Execute:
+php artisan package:discover --ansi
+
+Serve the application:
+php -S 127.0.0.10:80 -t public/
+
+Generate key on UI and refresh
