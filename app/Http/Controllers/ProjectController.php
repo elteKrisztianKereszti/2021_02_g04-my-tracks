@@ -32,6 +32,10 @@ class ProjectController extends Controller
         return view('projects/create');
     }
 
+    public function store(Request $request) {
+        dd($request);
+    }
+
     public function detail($id, Request $request)
     {
         //dd($request);
