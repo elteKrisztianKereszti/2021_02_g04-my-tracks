@@ -24,14 +24,14 @@ Route::view('/about', 'about')->name('about');
 // Projects
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.list');
 
-Route::get('/projects/{id}/show', [ProjectController::class, 'show'] )->name('projects.show');
+Route::get('/projects/{project}/show', [ProjectController::class, 'show'] )->name('projects.show');
 
 Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('projects/create', [ProjectController::class, 'store'] )->name('projects.store');
 
-Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
-Route::put('/projects/{id}', [ProjectController::class, 'update'] )->name('projects.update');
-Route::delete('/projects/{id}', [ProjectController::class, 'delete'] )->name('projects.delete');
+Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
+Route::put('/projects/{project}', [ProjectController::class, 'update'] )->name('projects.update');
+Route::delete('/projects/{project}', [ProjectController::class, 'delete'] )->name('projects.delete');
 
 Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
 

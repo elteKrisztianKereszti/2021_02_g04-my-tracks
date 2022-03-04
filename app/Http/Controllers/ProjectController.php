@@ -15,9 +15,8 @@ class ProjectController extends Controller
       ]);
     }
 
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
         return view('projects/detail', [
             'project' => $project
         ]);
@@ -39,18 +38,14 @@ class ProjectController extends Controller
         return redirect()->route('projects.show', $project->id);
     }
 
-    public function edit($id)
-    {
-        $project = Project::findOrFail($id);
-
-        return view('projects/edit', [
+    public function edit(Project $project)
+    {        return view('projects/edit', [
             'project' => $project
         ]);
     }
 
 
-    public function update($id, Request $request) {
-        $project = Project::findOrFail($id);
+    public function update(Project $project, Request $request) {
         $validated_data = $request->validate([
             'name' => 'required',
             'description' => 'nullable',
@@ -66,8 +61,7 @@ class ProjectController extends Controller
         return view('projects/create_task');
     }
 
-    public function delete($id) {
-        $project = Project::findOrFail($id);
+    public function delete(Project $project) {
         $project->delete();
         return redirect()->route('projects.list');
     }
