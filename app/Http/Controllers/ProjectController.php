@@ -27,6 +27,16 @@ class ProjectController extends Controller
         'projects' => $projects,
       ]);
     }
+
+    public function show($id, Request $request)
+    {
+        //dd($request);
+
+        return view('projects/detail', [
+            'id' => $id
+        ]);
+    }
+
     public function create()
     {
         return view('projects/create');
@@ -65,15 +75,6 @@ class ProjectController extends Controller
         ]);
 
         dd($request);
-    }
-
-    public function detail($id, Request $request)
-    {
-        //dd($request);
-
-        return view('projects/detail', [
-            'id' => $id
-        ]);
     }
 
     public function create_task()

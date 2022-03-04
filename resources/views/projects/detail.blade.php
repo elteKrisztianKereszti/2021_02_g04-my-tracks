@@ -2,6 +2,7 @@
 
 @section('content')
       <h2>Project{{ $id }}</h2>
+      <a href="{{ route('projects.edit', $id) }}"  class="btn btn-primary">Edit</a>
       <a href="new-track.html" class="btn btn-primary">Add new track</a>
       <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #bbb7b4">
