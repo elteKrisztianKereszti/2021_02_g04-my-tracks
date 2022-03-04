@@ -6,7 +6,7 @@
       <p>{{ $project->description }}</p>
 
       <a href="{{ route('projects.edit', $project->id) }}"  class="btn btn-primary">Edit</a>
-      <form action="{{ route('projects.delete', $project->id) }}" method="POST" class="d-inline">
+      <form action="{{ route('projects.destroy', $project->id) }}" method="POST" class="d-inline">
         @method('DELETE')
         @csrf
         <button type="submit" class="btn btn-danger">Delete</button>

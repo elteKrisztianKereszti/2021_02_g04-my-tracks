@@ -61,8 +61,8 @@ class ProjectController extends Controller
         return view('projects/create_task');
     }
 
-    public function delete(Project $project) {
+    public function destroy(Project $project) {
         $project->delete();
-        return redirect()->route('projects.list');
+        return redirect()->route('projects.index');
     }
 }
