@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TransposerController;
 
@@ -34,4 +35,5 @@ Route::put('/projects/{id}', [ProjectController::class, 'update'] )->name('proje
 Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
 
 // Transposer
-//Route::get('/transposer', [TransposerController:: class, 'index']);
+Route::get('/transposer', [TransposerController:: class, 'index'])->name('transposer');
+Route::post('/transposer', [TransposerController:: class, 'transpose'])->name('dotransposer');
