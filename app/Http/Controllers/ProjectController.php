@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -27,31 +27,22 @@ class ProjectController extends Controller
         return view('projects/create');
     }
 
-    public function store(Request $request) {
-        $validated_data = $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'image_url' => 'nullable|url',
-        ]);
+    public function store(ProjectFormRequest $request)
+    {
+        $validated_data = $request->validated();
         $project = Project::create($validated_data);
-
         return redirect()->route('projects.show', $project->id);
     }
 
     public function edit(Project $project)
-    {        return view('projects/edit', [
+    {
+        return view('projects/edit', [
             'project' => $project
         ]);
     }
 
-
-    public function update(Project $project, Request $request) {
-        $validated_data = $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'image_url' => 'nullable|url',
-        ]);
-
+    public function update(Project $project, ProjectFormRequest $request) {
+        $validated_data = $request->validated();
         $project->update($validated_data);
         return redirect()->route('projects.show', $project->id);
     }
