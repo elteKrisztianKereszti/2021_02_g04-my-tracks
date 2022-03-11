@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Project;
+use App\Models\Track;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProjectSeeder extends Seeder
+class TrackSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +16,7 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('projects')->truncate();
-        Project::factory()->count(15)->hasTracks(5)->create();
+        DB::table('tracks')->truncate();
+        Track::factory()->count(5)->create();
     }
 }

@@ -10,4 +10,8 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [ 'name', 'description', 'image_url' ];
+
+    public function tracks() {
+        return $this->hasMany(Track::class);
+    }
 }
