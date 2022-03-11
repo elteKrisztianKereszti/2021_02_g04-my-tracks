@@ -18,7 +18,14 @@ class TrackFactory extends Factory
     {
         return [
             'name'     => $this->faker->word,
-            'filename' => $this->faker->optional()->word,
+            'filename' => function() {
+                $filename = $this->faker->optional()->word;
+                if ($filename) {
+                    $filename .= ".wav";
+                }
+
+                return $filename;
+            } ,
             'color'    => $this->faker->hexColor,
         ];
     }
