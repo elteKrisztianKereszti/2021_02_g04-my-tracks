@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TrackController;
 use App\Http\Controllers\TransposerController;
 
 /*
@@ -34,6 +34,7 @@ Route::view('/about', 'about')->name('about');
 // Route::delete('/projects/{project}', [ProjectController::class, 'delete'] )->name('projects.delete');
 
 Route::resource('projects', ProjectController::class);
+Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index']);
 
 Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
 
