@@ -10,4 +10,12 @@ class Track extends Model
     use HasFactory;
 
     protected $fillable = [ 'name', 'filename', 'color' ];
+
+    public function project() {
+        return $this->belongsTo(Project::class);
+    }
+
+    public function filters() {
+        return $this->belongsToMany(Filter::class);
+    }
 }
