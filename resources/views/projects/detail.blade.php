@@ -14,7 +14,7 @@
       <a href="{{ route('projects.tracks.create', $project->id) }}" class="btn btn-primary">Add new track</a>
       <div class="list-group">
         @foreach ($project->tracks as $track)
-            <a href="#" class="list-group-item list-group-item-action" style="background-color: {{ $track->color }}">
+            <a href="{{ route('tracks.edit', $track->id) }}" class="list-group-item list-group-item-action" style="background-color: {{ $track->color }}">
             <p class="d-flex justify-content-between align-items-center">
               <span>
                 Trackname: {{ $track->name }}<br/>
