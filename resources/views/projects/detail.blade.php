@@ -29,6 +29,11 @@
               <li class="list-group-item p-1">Dapibus ac facilisis in</li>
               <li class="list-group-item p-1">Morbi leo risus</li>
             </ul>
+            <form action="{{ route('tracks.destroy', $track->id) }}" method="POST" class="d-inline">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
           </a>
         @endforeach
       </div>
