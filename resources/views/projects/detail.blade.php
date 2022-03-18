@@ -25,9 +25,9 @@
               <span class="badge badge-primary badge-pill">Muted</span>
             </p>
             <ul class="list-group list-group-horizontal">
-              <li class="list-group-item p-1">Cras justo odio</li>
-              <li class="list-group-item p-1">Dapibus ac facilisis in</li>
-              <li class="list-group-item p-1">Morbi leo risus</li>
+                @foreach ($track->filters as $filter)
+                    <li class="list-group-item p-1">{{ $filter->name }}</li>
+                @endforeach
             </ul>
             <form action="{{ route('tracks.destroy', $track->id) }}" method="POST" class="d-inline">
                 @method('DELETE')
