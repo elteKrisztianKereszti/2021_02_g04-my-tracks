@@ -13,7 +13,7 @@ class StoreTrackRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreTrackRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'filename' => 'nullable',
+            'color' => 'nullable|regex:/^#[0-9a-z]{6}$/'
         ];
     }
 }

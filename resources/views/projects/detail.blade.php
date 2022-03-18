@@ -11,7 +11,7 @@
         @csrf
         <button type="submit" class="btn btn-danger">Delete</button>
       </form>
-      <a href="new-track.html" class="btn btn-primary">Add new track</a>
+      <a href="{{ route('projects.tracks.create', $project->id) }}" class="btn btn-primary">Add new track</a>
       <div class="list-group">
         @foreach ($project->tracks as $track)
             <a href="#" class="list-group-item list-group-item-action" style="background-color: {{ $track->color }}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Track;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
+use App\Models\Project;
 
 class TrackController extends Controller
 {
@@ -23,9 +24,11 @@ class TrackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        return view('tracks.create', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -34,9 +37,11 @@ class TrackController extends Controller
      * @param  \App\Http\Requests\StoreTrackRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTrackRequest $request)
+    public function store(StoreTrackRequest $request, Project $project)
     {
-        //
+        $validated_data = $request->validated();
+        $project->tracks()->create($validated_data);
+        return redirect()->route('projects.show', $project->id);
     }
 
     /**
