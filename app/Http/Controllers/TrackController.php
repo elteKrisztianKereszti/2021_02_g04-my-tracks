@@ -17,8 +17,10 @@ class TrackController extends Controller
      */
     public function create(Project $project)
     {
+        $filters = Filter::all();
         return view('tracks.create', [
-            'project' => $project
+            'project' => $project,
+            'filters' => $filters
         ]);
     }
 
@@ -31,7 +33,8 @@ class TrackController extends Controller
     public function store(StoreTrackRequest $request, Project $project)
     {
         $validated_data = $request->validated();
-        $project->tracks()->create($validated_data);
+        $track = $project->tracks()->create($validated_data);
+        $track->filters()->sync($validated_data['filters'] ?? []);
         return redirect()->route('projects.show', $project->id);
     }
 
