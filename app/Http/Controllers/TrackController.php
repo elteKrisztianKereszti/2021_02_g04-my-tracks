@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Track;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
+use App\Models\Filter;
 use App\Models\Project;
 
 class TrackController extends Controller
@@ -42,8 +43,10 @@ class TrackController extends Controller
      */
     public function edit(Track $track)
     {
+        $filters = Filter::all();
         return view('tracks.edit', [
-            'track' => $track
+            'track' => $track,
+            'filters' => $filters
         ]);
     }
 
@@ -58,6 +61,7 @@ class TrackController extends Controller
     {
         $validated_data = $request->validated();
         $track->update($validated_data);
+        $track->filters()->sync($validated_data['filters'] ?? []);
         return redirect()->route('projects.show', $track->project_id);
     }
 

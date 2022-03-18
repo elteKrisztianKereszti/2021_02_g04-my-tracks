@@ -23,7 +23,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('filter_id');
             $table->unsignedBigInteger('track_id');
-            $table->string('name');
             $table->timestamps();
 
             $table->unique(['filter_id', 'track_id']);

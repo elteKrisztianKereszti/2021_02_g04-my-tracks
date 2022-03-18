@@ -26,7 +26,8 @@ class UpdateTrackRequest extends FormRequest
         return [
             'name' => 'required',
             'filename' => 'nullable',
-            'color' => 'nullable|regex:/^#[0-9a-z]{6}$/'
+            'color' => 'nullable|regex:/^#[0-9a-z]{6}$/',
+            'filters' => 'array|nullable'
         ];
     }
 }
