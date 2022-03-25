@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use App\Models\Filter;
 use App\Models\Project;
 use App\Models\Track;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ProjectSeeder extends Seeder
 {
@@ -20,8 +22,10 @@ class ProjectSeeder extends Seeder
         DB::table('projects')->truncate();
 
         $filters = Filter::all();
+        $users = User::all();
 
         Project::factory(3)
+            ->for($users[0])
             ->create()
             ->each(function ($project) use ($filters) {
                 $project->tracks()->createMany(
@@ -32,5 +36,11 @@ class ProjectSeeder extends Seeder
                     }
                 });
             });
+
+        User::factory()->hasProjects(4)->create([
+            'name' => 'Tassadar',
+            'email' => 'tass.a.dar@protoss.com',
+            'password' => Hash::make('12345678'),
+        ]);
     }
 }
