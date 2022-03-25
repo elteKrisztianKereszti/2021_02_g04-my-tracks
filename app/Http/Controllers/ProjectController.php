@@ -8,10 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Project::class, 'project');
+    }
+
     public function index()
     {
       $user_id = Auth::id();
       $projects = Project::all()->where('user_id', $user_id);
+
+      // TODO: Check
+      // $projects = Auth::user()->projects();
+
       return view('projects.index', [
         'projects' => $projects,
       ]);
@@ -19,8 +28,6 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        $this->authorize('view', $project);
-
         return view('projects/detail', [
             'project' => $project
         ]);
@@ -41,15 +48,12 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
-        $this->authorize('update', $project);
-
         return view('projects/edit', [
             'project' => $project
         ]);
     }
 
     public function update(Project $project, ProjectFormRequest $request) {
-        $this->authorize('update', $project);
         $validated_data = $request->validated();
         $project->update($validated_data);
         return redirect()->route('projects.show', $project->id);
@@ -61,7 +65,6 @@ class ProjectController extends Controller
     }
 
     public function destroy(Project $project) {
-        $this->authorize('delete', $project);
         $project->delete();
         return redirect()->route('projects.index');
     }
