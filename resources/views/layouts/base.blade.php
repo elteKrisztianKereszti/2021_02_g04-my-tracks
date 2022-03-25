@@ -24,9 +24,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav me-auto">
-          <a class="nav-item nav-link" href="{{ route('projects.index') }}">Projects</a>
+          @auth<a class="nav-item nav-link" href="{{ route('projects.index') }}">Projects</a>@endauth
           <a class="nav-item nav-link" href="{{ route('transposer') }}">Transposer</a>
-          <a class="nav-item nav-link" href="{{ route('projects.create') }}">New project</a>
+          @auth<a class="nav-item nav-link" href="{{ route('projects.create') }}">New project</a>@endauth
           <a class="nav-item nav-link" href="{{ route('about') }}">About</a>
         </div>
 

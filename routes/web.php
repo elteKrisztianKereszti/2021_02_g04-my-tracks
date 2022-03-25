@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TrackController;
@@ -22,10 +23,8 @@ Route::get('/', function () {
 
 Route::view('/about', 'about')->name('about');
 
-Route::resource('projects', ProjectController::class);
-Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index']);
-
-Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
+Route::resource('projects', ProjectController::class)->middleware('auth');
+Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index'])->middleware('auth');
 
 // Transposer
 Route::get('/transposer', [TransposerController:: class, 'index'])->name('transposer');
