@@ -21,17 +21,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::view('/about', 'about')->name('about');
-// Projects
-// Route::get('/projects', [ProjectController::class, 'index'])->name('projects.list');
-
-// Route::get('/projects/{project}/show', [ProjectController::class, 'show'] )->name('projects.show');
-
-// Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
-// Route::post('projects/create', [ProjectController::class, 'store'] )->name('projects.store');
-
-// Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
-// Route::put('/projects/{project}', [ProjectController::class, 'update'] )->name('projects.update');
-// Route::delete('/projects/{project}', [ProjectController::class, 'delete'] )->name('projects.delete');
 
 Route::resource('projects', ProjectController::class);
 Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index']);
@@ -44,4 +33,3 @@ Route::post('/transposer', [TransposerController:: class, 'transpose'])->name('d
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
