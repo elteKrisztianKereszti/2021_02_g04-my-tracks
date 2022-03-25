@@ -18,7 +18,7 @@ class ProjectPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class ProjectPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
